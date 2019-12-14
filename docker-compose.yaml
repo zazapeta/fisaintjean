@@ -1,0 +1,22 @@
+# Base docker-compose file
+version: '3.3'
+services:
+  # --------------------------------
+  #     DB: POSTGRES
+  # --------------------------------
+  db:
+    build:
+      context: .
+    restart: always
+    environment:
+      POSTGRES_DB: fi_saint_jean
+      POSTGRES_USER: sami
+      POSTGRES_NON_ROOT_USER: xan
+      POSTGRES_NON_ROOT_USER_PASSWORD: xan
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+volumes:
+  db-data:
+    driver: local
